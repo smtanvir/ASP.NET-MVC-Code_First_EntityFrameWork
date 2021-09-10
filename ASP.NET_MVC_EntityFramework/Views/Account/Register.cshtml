@@ -1,0 +1,54 @@
+﻿@model ASP.NET_MVC_EntityFramework.Models.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="row mt-5">
+    <div class="offset-3 col-md-6 mt-2">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="card bg-light">
+                <article class="card-body mx-auto" style="max-width:300px;">
+                    <h3 class="text-center card-title mt-1 mb-4">Register Now</h3>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        @Html.LabelFor(r => r.UserName, new { @class = "form-control-label col-md-12 fa fa-user" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(r => r.UserName, new { htmlAttributes = new { @class = "form-control fa fa-user ", placeholder = "Username" } })
+                            @Html.ValidationMessageFor(r => r.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(r => r.Email, new { @class = "form-control-label col-md-12 fa fa-envelope" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(r => r.Email, new { htmlAttributes = new { @class = "form-control fa fa-envelope", placeholder = "E-mail Address" } })
+                            @Html.ValidationMessageFor(r => r.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(r => r.Password, new { @class = "form-control-label col-md-12 fa fa-lock" })
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(r => r.Password, new { @class = "form-control fa fa-lock", placeholder = "Password", @type = "password" })
+                            @Html.ValidationMessageFor(r => r.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(r => r.ConfirmPasswor, new { @class = "form-control-label col-md-12 fa fa-lock" })
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(r => r.ConfirmPasswor, new { @class = "form-control fa fa-lock", placeholder = "Confirm Password", @type = "password" })
+                            @Html.ValidationMessageFor(r => r.ConfirmPasswor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block fa fa-user-plus">&nbsp; Create Account</button>
+                        <div class="mt-2">
+                            Have an account? @Html.ActionLink(" Login", "Login", "Account", new { }, new { @class = "btn btn-link fa fa-sign-in btn-sm" })
+                        </div>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+</div>

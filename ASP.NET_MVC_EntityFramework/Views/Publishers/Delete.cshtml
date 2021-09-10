@@ -1,0 +1,36 @@
+﻿@model ASP.NET_MVC_EntityFramework.Models.Publisher
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="row mt-3">
+    <div class="col-md-7 offset-3">
+        @using (Html.BeginForm("Delete", "Publishers"))
+        {
+            @Html.AntiForgeryToken()
+        <div class="form-text" style="font-size:20px; color:blue">
+            <h3 class="alert alert-warning">Are you sure to delete this information ? </h3>
+            <div class="border">
+                <h4 class="mb-3 text-center alert alert-info">Publisher Information</h4>
+                <div class="form-group row ml-2">
+                    @Html.LabelFor(p => p.Id, new { @class ="form-control-label col-md-4" }):
+                    <div class="col-md-7">
+                        @Html.DisplayFor(p => p.Id, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group row ml-2">
+                    @Html.LabelFor(p => p.PublisherName, new { @class = "form-control-label col-md-4" }):
+                    <div class="col-md-7">
+                        @Html.DisplayFor(p => p.PublisherName, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                    @Html.ActionLink(" Back To List", "Index", new { }, new { @class = "fa fa-arrow-left" })
+                    <input type="submit" value=" Delete" class="btn btn-danger fa fa-trash-o float-right" />
+            </div>
+        </div>
+        }
+    </div>
+</div>
+

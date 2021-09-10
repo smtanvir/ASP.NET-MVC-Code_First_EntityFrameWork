@@ -1,0 +1,60 @@
+﻿@model ASP.NET_MVC_EntityFramework.Models.Publisher
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="msg" class="text-center mt-2"></div>
+<div class="row mt-3">
+    <div class="offset-3  col-md-8">
+        
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "ClearAll" }))
+        {
+            @Html.AntiForgeryToken()
+            //HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+            <div class="form-text">
+                <h2 class=" mb-3 mt-3">Add New Publisher</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group row">
+                    @Html.LabelFor(p => p.PublisherName, new { @class = "form-control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(p => p.PublisherName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(p => p.PublisherName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="offset-3 col-md-6">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="offset-3 form-group">
+    @Html.ActionLink(" Back To List", "Index", new { }, new { @class = "fa fa-arrow-left" })
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function ClearAll() {
+            $("#form0").trigger("reset");
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#form0').validate({
+                
+                rules: {
+                    'PublisherName': {
+                        required: true,
+                    }
+                },
+                messages: {
+                    'PublisherName': 'Invalid PublisherName'
+            });
+        });
+    </script>
+}
+

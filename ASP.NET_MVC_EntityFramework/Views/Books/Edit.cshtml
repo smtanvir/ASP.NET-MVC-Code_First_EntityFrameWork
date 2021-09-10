@@ -1,0 +1,33 @@
+﻿@model ASP.NET_MVC_EntityFramework.Models.ViewModels.BookViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section styles{
+
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+
+<div class="row mt-3">
+    <div class="col">
+       @Html.Partial("_Edit",Model)
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".PublishDate").datepicker({
+                format:"dd-MM-yyyy",
+                autoclose: true,
+                todayHighlight: true,
+                orientation: 'auto bottom'
+            });
+        });
+    </script>
+}

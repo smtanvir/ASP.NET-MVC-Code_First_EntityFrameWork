@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ASP.NET_MVC_EntityFramework.Models.Publisher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row mt-3">
+    <div class=" offset-3 col-md-6">
+        <h2 class="text-center">Publishers List</h2>
+        <div class="d-flex justify-content-end">
+            @Html.ActionLink(" Add New", "Create", "Publishers", new { @class = "btn btn-success mb-1 fa fa-plus" })
+        </div>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(p => p.PublisherName)</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr >
+                        <td>@p.PublisherName</td>
+                        <td class="d-flex justify-content-center">
+                            @Html.ActionLink(" ", "Edit", new { id = p.Id }, new { @class = "fa fa-edit btn btn-primary btn-sm"})
+                            &nbsp;&nbsp;&nbsp;
+                            @Html.ActionLink(" ", "Delete", new { id = p.Id }, new { @class = "fa fa-trash-o btn btn-danger btn-sm"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
