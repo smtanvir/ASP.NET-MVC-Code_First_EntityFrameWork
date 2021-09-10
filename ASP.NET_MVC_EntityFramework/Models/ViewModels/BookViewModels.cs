@@ -11,7 +11,8 @@ namespace ASP.NET_MVC_EntityFramework.Models.ViewModels
     {
         [Display(Name = "Book ID")]
         public int BookId { get; set; }
-       [RegularExpression(@"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)*\s*$",ErrorMessage ="Only characters are allowed!!!")]
+        [RegularExpression(@"^[A-Z][a-z']+(?: [A-Za-z&-]+)*\s?", ErrorMessage = "Book name start with uppercase & Only characters are allowed!!!")]
+        //[RegularExpression(@"^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)*\s*$",ErrorMessage ="Only characters are allowed!!!")]
         [Required(ErrorMessage = "Book name is required")]
         [Display(Name = "Book Name")]
         public string BookName { get; set; }
